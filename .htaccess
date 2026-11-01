@@ -1,0 +1,20 @@
+# Configuración MIME y CORS para Unity WebGL (Apache)
+<IfModule mod_mime.c>
+  AddType application/wasm .wasm
+  AddType application/octet-stream .data
+  AddType application/javascript .js
+  AddType text/css .css
+  AddType text/html .html
+  AddType image/x-icon .ico
+  AddType image/png .png
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+  Header set Cross-Origin-Opener-Policy "same-origin"
+  Header set Cross-Origin-Embedder-Policy "require-corp"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE application/javascript application/wasm text/html text/css
+</IfModule>
